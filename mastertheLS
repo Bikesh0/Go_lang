@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ls -u -t -p | paste -sd ',' -
