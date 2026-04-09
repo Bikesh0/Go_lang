@@ -5,10 +5,6 @@ if [ -z "$HERO_ID" ]; then
     exit 1
 fi
 
-if ! [[ "$HERO_ID" =~ ^[0-9]+$ ]]; then
-    echo "HERO_ID must be a number."
-    exit 1
-fi
 
 curl -s "https://01.gritlab.ax/assets/superhero/all.json" | \
 jq -r --arg id "$HERO_ID" \
