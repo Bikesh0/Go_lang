@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "John Doe"
+echo "John Doe"
