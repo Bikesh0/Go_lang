@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ find /piscine-go/look -type f \( -name "*a" -o -name "z*" -o -name "a*z" \)
