@@ -12,5 +12,5 @@ jq -r --arg id "$HERO_ID" '
   .[] 
   | select(.id == ($id | tonumber)) 
   | (.connections.relatives // "") 
-  | gsub("\n"; ", ")
+  | gsub("\\n"; "; ")
 '
