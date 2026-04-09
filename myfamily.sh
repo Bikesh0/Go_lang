@@ -6,11 +6,14 @@ if [ -z "$HERO_ID" ]; then
     exit 1
 fi
 
-# Fetch superhero data and print relatives in one line
+# Fetch superhero data and print relatives in one single line
 curl -s "https://01.gritlab.ax/assets/superhero/all.json" | \
 jq -r --arg id "$HERO_ID" '
   .[] 
   | select(.id == ($id | tonumber)) 
-  | (.connections.relatives // "") 
-  | gsub("\\n"; "; ")
+  | .connections.relatives 
+  | if type=="array" then join("; ") 
+    elif type=="string" then gsub("\\n"; "; ") 
+    else "" 
+    end
 '
