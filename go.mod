@@ -1,5 +1,5 @@
 module piscine
 
-go 1.26.1
+go 1.25.9
 
 require github.com/01-edu/z01 v0.1.0 // indirect
