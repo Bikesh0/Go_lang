@@ -1,11 +1,9 @@
 package piscine
 
-func StrLen(s string) int {
-	count := 0
+import "github.com/01-edu/z01"
 
-	for range s {
-		count++
+func PrintStr(s string) {
+	for _, r := range s {
+		z01.PrintRune(r)
 	}
-
-	return count
 }

@@ -1,0 +1,1 @@
+HERO_ID=1 bash myfamily.sh
