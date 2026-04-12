@@ -1,9 +1,10 @@
 package piscine
 
-func BasicAtoi(s string) int {
+func BasicAtoi2(s string) int {
 	result := 0
 
 	for i := 0; i < len(s); i++ {
+		// if not a digit → invalid
 		if s[i] < '0' || s[i] > '9' {
 			return 0
 		}
