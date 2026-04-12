@@ -17,4 +17,4 @@ func SortIntegerTable(table []int) {
 			}
 		}
 	}
-}
+} // works well when tested .
