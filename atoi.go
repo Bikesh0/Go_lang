@@ -1,6 +1,4 @@
-package piscine
-
-func Atoi(s string) int {
+// Empty filefunc Atoi(s string) int {
 	result := 0
 	sign := 1
 
