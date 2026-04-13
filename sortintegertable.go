@@ -12,7 +12,7 @@ func SortIntegerTable(table []int) {
 		// The "-i-1" avoids re-checking elements already sorted at the end
 		for j := 0; j < n-i-1; j++ { // Inner loop compares adjacent elements like first with this second if i is first j is second element
 
-			if table[j] > table[j+1] { //so we compare here and interchange position in ascending order.
+			if table[j] > table[j+1] { // so we compare here and interchange position in ascending order.
 				table[j], table[j+1] = table[j+1], table[j]
 			}
 		}
