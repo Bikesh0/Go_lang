@@ -14,7 +14,7 @@ func RecursiveFactorial(nb int) int {
 	}
 
 	res := nb * result
-	if res < 0 {
+	if res/result != nb {
 		return 0
 	}
 
