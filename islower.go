@@ -1,12 +1,12 @@
 package piscine
 
-func IsUpper(s string) bool {
+func IsLower(s string) bool {
 	if s == "" {
 		return false
 	}
 
 	for i := 0; i < len(s); i++ {
-		if s[i] < 'A' || s[i] > 'Z' {
+		if s[i] < 'a' || s[i] > 'z' {
 			return false
 		}
 	}
