@@ -1,50 +1,36 @@
 package piscine
 
-import "fmt"
+import "github.com/01-edu/z01"
 
 func EightQueens() {
 	var board [8]int
-	solve(board, 0)
-}
 
-func solve(board [8]int, col int) {
-	if col == 8 {
-		printSolution(board)
-		return
-	}
+	var backtrack func(int)
+	backtrack = func(col int) {
+		if col == 8 {
+			for i := 0; i < 8; i++ {
+				z01.PrintRune(rune(board[i] + '1'))
+			}
+			z01.PrintRune('\n')
+			return
+		}
 
-	for row := 0; row < 8; row++ {
-		if isSafe(board, col, row) {
-			board[col] = row
-			solve(board, col+1)
+		for row := 0; row < 8; row++ {
+			valid := true
+
+			for i := 0; i < col; i++ {
+				if board[i] == row || board[i]-i == row-col || board[i]+i == row+col {
+					valid = false
+					break
+				}
+			}
+
+			if valid {
+				board[col] = row
+				backtrack(col + 1)
+			}
 		}
 	}
-}
 
-func isSafe(board [8]int, col, row int) bool {
-	for i := 0; i < col; i++ {
-		// same row
-		if board[i] == row {
-			return false
-		}
-		// same diagonal
-		if abs(board[i]-row) == col-i {
-			return false
-		}
-	}
-	return true
-}
-
-func printSolution(board [8]int) {
-	for i := 0; i < 8; i++ {
-		fmt.Print(board[i] + 1)
-	}
-	fmt.Println()
-}
-
-func abs(n int) int {
-	if n < 0 {
-		return -n
-	}
-	return n
+	backtrack(0)
 }
