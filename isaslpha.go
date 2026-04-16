@@ -1,6 +1,6 @@
 package piscine
 
-func IsLower(s string) bool {
+func IsAlpha(s string) bool {
 	if s == "" {
 		return false
 	}
