@@ -1,7 +1,7 @@
 package piscine
 
 func IsPrintable(str string) bool {
-	if s == "" {
+	if str == "" {
 		return false
 	}
 
