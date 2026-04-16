@@ -1,12 +1,12 @@
 package piscine
 
-func IsPrintable(s string) bool {
+func IsPrintable(str string) bool {
 	if s == "" {
 		return false
 	}
 
-	for i := 0; i < len(s); i++ {
-		if s[i] < 32 || s[i] > 126 {
+	for i := 0; i < len(str); i++ {
+		if str[i] < 32 || str[i] > 126 {
 			return false
 		}
 	}
