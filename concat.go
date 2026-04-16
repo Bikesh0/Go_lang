@@ -1,10 +1,5 @@
 package piscine
 
-func IsPrintable(str string) bool {
-	for _, char := range str {
-		if char < 32 || char > 126 {
-			return false
-		}
-	}
-	return true
+func Concat(str1 string, str2 string) string {
+	return str1 + str2
 }
