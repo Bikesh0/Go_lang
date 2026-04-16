@@ -1,4 +1,4 @@
-  package piscine 
+package piscine
 
 func LastRune(s string) rune {
 	var last rune
