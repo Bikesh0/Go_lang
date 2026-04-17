@@ -1,23 +1,17 @@
 package main
 
 import (
+	"fmt"
 	"os"
-
-	"github.com/01-edu/z01"
+	"sort"
 )
 
 func main() {
-	arg := os.Args
+	args := os.Args[1:]
 
-	for _, a := range arg { // a = string
-		for _, ch := range a { // ch = rune
-			if (ch >= 'a' && ch <= 'z') ||
-				(ch >= 'A' && ch <= 'Z') ||
-				(ch >= '0' && ch <= '9') {
+	sort.Strings(args)
 
-				z01.PrintRune(ch)
-			}
-		}
-		z01.PrintRune('\n')
+	for _, s := range args {
+		fmt.Println(s)
 	}
 }
