@@ -1,17 +1,28 @@
 package main
 
 import (
-	"fmt"
 	"os"
-	"sort"
+
+	"github.com/01-edu/z01"
 )
 
 func main() {
-	args := os.Args[1:]
+	args := os.Args[1:] // skip program name
 
-	sort.Strings(args)
+	// sort
+	for i := 0; i < len(args); i++ {
+		for j := i + 1; j < len(args); j++ {
+			if args[j] < args[i] {
+				args[i], args[j] = args[j], args[i]
+			}
+		}
+	}
 
-	for _, s := range args {
-		fmt.Println(s)
+	// print WITHOUT filtering
+	for _, a := range args {
+		for _, ch := range a {
+			z01.PrintRune(ch)
+		}
+		z01.PrintRune('\n')
 	}
 }
