@@ -1,7 +1,6 @@
 package piscine
 
 func TrimAtoi(s string) int {
-
 	result := 0         // 👉 final number
 	sign := 1           // 👉 default is positive
 	foundDigit := false // 👉 track if we found any digit yet
