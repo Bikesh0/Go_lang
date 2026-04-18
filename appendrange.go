@@ -15,7 +15,6 @@ func AppendRange(min, max int) []int {
 	// Loop from min up to (but NOT including) max.
 	// Example: if min = 5 and max = 10 → i will be 5,6,7,8,9
 	for i := min; i < max; i++ {
-
 		// Append the current value of i to the slice.
 		// If the slice is nil, append will automatically
 		// allocate memory and add the first element.
