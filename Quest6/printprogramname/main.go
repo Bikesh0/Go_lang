@@ -8,6 +8,7 @@ import (
 
 func main() {
 	last := 0
+	name := os.Args[0]
 	for i := 0; i < len(name); i++ {
 		if name[i] == '/' {
 			last = i
