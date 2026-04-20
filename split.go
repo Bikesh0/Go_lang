@@ -1,6 +1,5 @@
-package piscine
+  package piscine 
 
-// Split splits a string by a given separator and returns a slice of strings.
 func Split(s, sep string) []string {
 	var result []string
 
