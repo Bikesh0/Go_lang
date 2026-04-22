@@ -1,76 +1,42 @@
 package main
 
-import (
-    "os"
-    "strconv"
+import "github.com/01-edu/z01"
 
-    "github.com/01-edu/z01"
-)
+type point struct {
+	x int
+	y int
+}
 
-func printString(s string) {
-    for , r := range s {
-        z01.PrintRune(r)
-    }
+func setPoint(ptr *point) {
+	ptr.x = 'Z' - '0'                 // 42
+	ptr.y = ('A' - '0') + ('K' - 'A') // 21
 }
 
 func main() {
-    args := os.Args[1:]
+	p := &point{}
+	setPoint(p)
 
-    if len(args) < 3  args[0] != "-c" {
-        return
-    }
+	// print "x = "
+	z01.PrintRune('x')
+	z01.PrintRune(' ')
+	z01.PrintRune('=')
+	z01.PrintRune(' ')
 
-    n, err := strconv.Atoi(args[1])
-    if err != nil  n < 0 {
-        return
-    }
+	// print x (42)
+	z01.PrintRune(p.x/10 + '0')
+	z01.PrintRune(p.x%10 + '0')
 
-    files := args[2:]
-    exitCode := 0
+	// print ", y = "
+	z01.PrintRune(',')
+	z01.PrintRune(' ')
+	z01.PrintRune('y')
+	z01.PrintRune(' ')
+	z01.PrintRune('=')
+	z01.PrintRune(' ')
 
-    for i, name := range files {
-        file, err := os.Open(name)
-        if err != nil {
-            printString(err.Error() + "\n")
-            exitCode = 1
-            continue
-        }
+	// print y (21)
+	z01.PrintRune(p.y/10 + '0')
+	z01.PrintRune(p.y%10 + '0')
 
-        info, err := file.Stat()
-        if err != nil {
-            file.Close()
-            exitCode = 1
-            continue
-        }
-
-        size := info.Size()
-        start := int64(0)
-
-        if int64(n) < size {
-            start = size - int64(n)
-        }
-
-        file.Seek(start, 0)
-
-        // Header if multiple files
-        if len(files) > 1 {
-            if i > 0 {
-                printString("\n")
-            }
-            printString("==> " + name + " <==\n")
-        }
-
-        buf := make([]byte, n)
-        bytesRead,  := file.Read(buf)
-
-        for j := 0; j < bytesRead; j++ {
-            z01.PrintRune(rune(buf[j]))
-        }
-
-        file.Close()
-    }
-
-    if exitCode != 0 {
-        os.Exit(1)
-    }
+	z01.PrintRune('\n')
 }
