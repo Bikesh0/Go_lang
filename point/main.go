@@ -16,7 +16,13 @@ func main() {
 	points := &point{}
 	setPoint(points)
 
-	str := "x = 42, y = 21\n"
+	str := "x = " +
+		string('0'+(points.x/10)) +
+		string('0'+(points.x%10)) +
+		", y = " +
+		string('0'+(points.y/10)) +
+		string('0'+(points.y%10)) +
+		"\n"
 
 	for _, r := range str {
 		z01.PrintRune(r)
