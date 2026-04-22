@@ -2,15 +2,21 @@ package main
 
 import (
 	"os"
-	"strconv"
-
-	"github.com/01-edu/z01"
 )
 
 func printString(s string) {
-	for _, r := range s {
-		z01.PrintRune(r)
+	os.Stdout.Write([]byte(s))
+}
+
+func atoi(s string) (int, bool) {
+	n := 0
+	for _, c := range s {
+		if c < '0' || c > '9' {
+			return 0, false
+		}
+		n = n*10 + int(c-'0')
 	}
+	return n, true
 }
 
 func main() {
@@ -20,8 +26,8 @@ func main() {
 		return
 	}
 
-	n, err := strconv.Atoi(args[1])
-	if err != nil || n < 0 {
+	n, ok := atoi(args[1])
+	if !ok || n < 0 {
 		return
 	}
 
@@ -52,7 +58,6 @@ func main() {
 
 		file.Seek(start, 0)
 
-		// Header if multiple files
 		if len(files) > 1 {
 			if i > 0 {
 				printString("\n")
@@ -63,9 +68,7 @@ func main() {
 		buf := make([]byte, n)
 		bytesRead, _ := file.Read(buf)
 
-		for j := 0; j < bytesRead; j++ {
-			z01.PrintRune(rune(buf[j]))
-		}
+		os.Stdout.Write(buf[:bytesRead])
 
 		file.Close()
 	}
