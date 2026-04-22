@@ -81,8 +81,8 @@ func solve(board [][]int) bool {
 
 	// Try numbers 1 through 9
 	for num := 1; num <= 9; num++ {
-		if isSafe(board, row, col, num) { //continue if no repeating number
-			board[row][col] = num //temp fill the cell
+		if isSafe(board, row, col, num) { // continue if no repeating number
+			board[row][col] = num // temp fill the cell
 
 			// Recursively attempt to solve the rest
 			if solve(board) {
@@ -115,10 +115,10 @@ func solveCount(board [][]int, count *int) {
 	// Try numbers 1 through 9
 	for num := 1; num <= 9; num++ {
 		if isSafe(board, row, col, num) { // no duplicate or repeating number
-			board[row][col] = num //temp value
+			board[row][col] = num // temp value
 
 			// Recursively count solutions
-			solveCount(board, count) //recurseive moves forward to solve the board
+			solveCount(board, count) // recurseive moves forward to solve the board
 
 			// Backtrack
 			board[row][col] = 0 // reset either solving or not solving. addcount if soln found
