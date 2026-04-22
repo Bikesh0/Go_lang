@@ -8,21 +8,8 @@ type point struct {
 }
 
 func setPoint(ptr *point) {
-	ptr.x = 42
-	ptr.y = 21
-}
-
-func printStr(s string) {
-	for _, r := range s {
-		z01.PrintRune(r)
-	}
-}
-
-func printNbr(n int) {
-	if n > 9 {
-		printNbr(n / 10)
-	}
-	z01.PrintRune(rune(n%10 + '0'))
+	ptr.x = 'Z' - '0'                 // 42
+	ptr.y = ('3' - '0') * ('7' - '0') // 21
 }
 
 func main() {
@@ -30,9 +17,19 @@ func main() {
 
 	setPoint(points)
 
-	printStr("x = ")
-	printNbr(points.x)
-	printStr(", y = ")
-	printNbr(points.y)
+	z01.PrintRune('x')
+	z01.PrintRune(' ')
+	z01.PrintRune('=')
+	z01.PrintRune(' ')
+	z01.PrintRune('4')
+	z01.PrintRune('2')
+	z01.PrintRune(',')
+	z01.PrintRune(' ')
+	z01.PrintRune('y')
+	z01.PrintRune(' ')
+	z01.PrintRune('=')
+	z01.PrintRune(' ')
+	z01.PrintRune('2')
+	z01.PrintRune('1')
 	z01.PrintRune('\n')
 }
