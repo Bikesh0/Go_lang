@@ -1,40 +1,33 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
 	"io"
 	"os"
 )
 
-func printError(err error, name string) {
-	fmt.Println("ERROR:", err)
+func printError(err error) {
+	os.Stdout.Write([]byte("ERROR: "))
+	os.Stdout.Write([]byte(err.Error()))
+	os.Stdout.Write([]byte("\n"))
 	os.Exit(1)
-}
-
-func readAndPrint(r io.Reader) {
-	scanner := bufio.NewScanner(r)
-	for scanner.Scan() {
-		fmt.Println(scanner.Text())
-	}
 }
 
 func main() {
 	args := os.Args[1:]
 
-	// No arguments → read stdin
+	// No arguments → stdin
 	if len(args) == 0 {
-		readAndPrint(os.Stdin)
+		io.Copy(os.Stdout, os.Stdin)
 		return
 	}
 
 	for _, name := range args {
 		file, err := os.Open(name)
 		if err != nil {
-			printError(err, name)
+			printError(err)
 		}
 
-		readAndPrint(file)
+		io.Copy(os.Stdout, file)
 		file.Close()
 	}
 }
