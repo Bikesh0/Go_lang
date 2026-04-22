@@ -16,14 +16,16 @@ func main() {
 	points := &point{}
 	setPoint(points)
 
-	z01.PrintRune('x')
-	z01.PrintRune('=')
-	z01.PrintRune('4')
-	z01.PrintRune('2')
-	z01.PrintRune(',')
-	z01.PrintRune('y')
-	z01.PrintRune('=')
-	z01.PrintRune('2')
-	z01.PrintRune('1')
-	z01.PrintRune('\n')
+	// We format the values into a slice of runes
+	// 'x = 42, y = 21'
+	result := []rune{
+		'x', ' ', '=', ' ', rune('0' + points.x/10), rune('0' + points.x%10),
+		',', ' ', 'y', ' ', '=', ' ', rune('0' + points.y/10), rune('0' + points.y%10),
+		'\n',
+	}
+
+	// This single loop uses only 1 PrintRune call
+	for _, r := range result {
+		z01.PrintRune(r)
+	}
 }
