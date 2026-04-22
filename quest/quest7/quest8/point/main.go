@@ -5,7 +5,9 @@ import (
 )
 
 func printString(s string) {
-	os.Stdout.Write([]byte(s))
+	for _, c := range s {
+		os.Stdout.Write([]byte{byte(c)})
+	}
 }
 
 func main() {
