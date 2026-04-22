@@ -9,27 +9,22 @@ type point struct {
 
 func setPoint(ptr *point) {
 	ptr.x = 'Z' - '0'                 // 42
-	ptr.y = ('3' - '0') * ('7' - '0') // 21
+	ptr.y = ('A' - '0') + ('K' - 'A') // 21
 }
 
 func main() {
 	points := &point{}
-
 	setPoint(points)
 
-	z01.PrintRune('x')
-	z01.PrintRune(' ')
-	z01.PrintRune('=')
-	z01.PrintRune(' ')
-	z01.PrintRune('4')
-	z01.PrintRune('2')
-	z01.PrintRune(',')
-	z01.PrintRune(' ')
-	z01.PrintRune('y')
-	z01.PrintRune(' ')
-	z01.PrintRune('=')
-	z01.PrintRune(' ')
-	z01.PrintRune('2')
-	z01.PrintRune('1')
-	z01.PrintRune('\n')
+	str := "x = " +
+		string(points.x/'0'+'0') +
+		string(points.x%'0'+'0') +
+		", y = " +
+		string(points.y/'0'+'0') +
+		string(points.y%'0'+'0') +
+		"\n"
+
+	for _, r := range str {
+		z01.PrintRune(r)
+	}
 }
