@@ -1,31 +1,21 @@
 package main
 
-import (
-	"os"
+import "fmt"
 
-	"github.com/01-edu/z01"
-)
-
-func printStr(s string) {
-	for _, r := range s {
-		z01.PrintRune(r)
-	}
-	z01.PrintRune('\n')
+type point struct {
+	x int
+	y int
 }
 
-func isEven(nbr int) bool {
-	if nbr%2 == 0 {
-		return true
-	}
-	return false
+func setPoint(ptr *point) {
+	ptr.x = 42
+	ptr.y = 21
 }
 
 func main() {
-	lengthOfArg := len(os.Args) - 1
+	points := &point{}
 
-	if isEven(lengthOfArg) {
-		printStr("I have an even number of arguments")
-	} else {
-		printStr("I have an odd number of arguments")
-	}
+	setPoint(points)
+
+	fmt.Printf("x = %d, y = %d\n", points.x, points.y)
 }
