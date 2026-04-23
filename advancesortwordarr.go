@@ -1,15 +1,14 @@
 package piscine
 
-// SortWordArr sorts a slice of strings in ascending ASCII order.
-func SortWordArr(a []string) {
+// AdvancedSortWordArr sorts the slice using the function f
+func AdvancedSortWordArr(a []string, f func(a, b string) int) {
 	n := len(a)
 
-	// Bubble sort algorithm
+	// Simple bubble sort
 	for i := 0; i < n-1; i++ {
 		for j := 0; j < n-i-1; j++ {
-			// Compare strings directly (ASCII order)
-			if a[j] > a[j+1] {
-				// Swap elements
+			// Use the comparator function
+			if f(a[j], a[j+1]) > 0 {
 				a[j], a[j+1] = a[j+1], a[j]
 			}
 		}
