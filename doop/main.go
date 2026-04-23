@@ -36,6 +36,11 @@ func main() {
 	switch op {
 	case "+":
 		result = a + b
+		if (b > 0 && a > 9223372036854775807-b) ||
+			(b < 0 && a < -9223372036854775808-b) {
+			return
+		}
+
 	case "-":
 		result = a - b
 	case "*":
