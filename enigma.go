@@ -6,8 +6,8 @@ func Enigma(a ***int, b *int, c *******int, d ****int) {
 	C := *******c
 	D := ****d
 
-	***a := C
-	*******c := D
-	****d := B
-	*b := A
+	***a = C
+	*******c = D
+	****d = B
+	*b = A
 }
